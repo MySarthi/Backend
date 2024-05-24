@@ -1,12 +1,17 @@
 const express = require('express');
 const app = express();
+const GuideRoutes=require('./Routers/GuideRoutes');
+const UserRoutes=require('./Routers/userRoutes')
 
 require("dotenv").config();
 
+app.use('/api/v1/user',UserRoutes);
+app.use('/api/v1/guide',GuideRoutes);
+
 const PORT = process.env.PORT || 3000;
 
-app.listen(3000, ()=>{
-    console.log("App is running");
+app.listen(PORT, ()=>{
+    console.log(`App is running on PORT ${PORT}`);
 })
 
 app.get("/" , (req, res) =>{
